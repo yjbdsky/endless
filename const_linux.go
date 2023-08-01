@@ -4,8 +4,12 @@
 package endless
 
 import (
+	"crypto/tls"
+	"log"
 	"os"
+	"os/signal"
 	"syscall"
+	"time"
 )
 
 var HookableSignals = []os.Signal{
