@@ -7,11 +7,11 @@ import (
 	"os"
 	"time"
 
-	"github.com/fvbock/endless"
 	"github.com/gorilla/mux"
+	"github.com/yjbdsky/endless"
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
+func handler4(w http.ResponseWriter, r *http.Request) {
 	time.Sleep(time.Duration(rand.Intn(2000)) * time.Millisecond)
 	w.Write([]byte("bar\n"))
 }
@@ -19,7 +19,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	// endless.DefaultHammerTime = 10*time.Second
 	mux := mux.NewRouter()
-	mux.HandleFunc("/foo", handler).
+	mux.HandleFunc("/foo", handler4).
 		Methods("GET")
 
 	err := endless.ListenAndServe("localhost:4242", mux)

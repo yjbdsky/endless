@@ -6,11 +6,11 @@ import (
 	"os"
 	"syscall"
 
-	"github.com/fvbock/endless"
 	"github.com/gorilla/mux"
+	"github.com/yjbdsky/endless"
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
+func handler1(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("WORLD!"))
 }
 
@@ -24,7 +24,7 @@ func postSigUsr1() {
 
 func main() {
 	mux1 := mux.NewRouter()
-	mux1.HandleFunc("/hello", handler).
+	mux1.HandleFunc("/hello", handler1).
 		Methods("GET")
 
 	srv := endless.NewServer("localhost:4244", mux1)
